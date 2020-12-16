@@ -18,4 +18,19 @@ public class Professeur extends Personne implements Serializable{
 		joinColumns = @JoinColumn(name="professeur_id"),
 		inverseJoinColumns = @JoinColumn(name="matiere_id"))
 	Set<Matiere> matieres;
+	
+	public String getMatricule() {
+		return matricule;
+	}
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
+	}
+	public Long getContact() {
+		return contact;
+	}
+	public void setContact(Long contact) {
+		this.contact = contact;
+	}
+	
+	
 }
