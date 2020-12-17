@@ -36,7 +36,7 @@ public class SchoolProjectApplication implements CommandLineRunner {
 		Date today = new Date();
 		SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
 		String dt = formater.format(today);
-		//eleveRepository.save(new Eleve(null,"Eric","Konan","M",52,null));
+		//eleveRepository.save(new Eleve(null,"Eric","Konan","M",52,dt));
 	}
 
 }
