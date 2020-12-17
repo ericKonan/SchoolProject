@@ -12,5 +12,16 @@ public abstract class Personne {
 	private Long id;
 	private String nom;
 	private String prenom;
+	private char sexe;
+	
+	public Personne(Long id, String nom, String prenom, char sexe) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.sexe = sexe;
+	}
+	
+	
 	
 }

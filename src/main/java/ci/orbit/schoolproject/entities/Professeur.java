@@ -17,6 +17,13 @@ public class Professeur extends Personne implements Serializable{
 	@ManyToMany
 	Set<Matiere> matieres;
 	
+	
+	public Professeur(Long id, String nom, String prenom, char sexe, String matricule, Long contact) {
+		super(id, nom, prenom, sexe);
+		this.matricule = matricule;
+		this.contact = contact;
+		
+	}
 	public String getMatricule() {
 		return matricule;
 	}
