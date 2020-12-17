@@ -12,5 +12,5 @@ public abstract class Personne {
 	private Long id;
 	private String nom;
 	private String prenom;
-	private char sexe;
+	
 }

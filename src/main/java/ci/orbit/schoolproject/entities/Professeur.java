@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
 public class Professeur extends Personne implements Serializable{
+	
 	private String matricule;
 	private Long contact;
 	@ManyToMany

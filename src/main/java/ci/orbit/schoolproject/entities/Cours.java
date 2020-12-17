@@ -26,6 +26,12 @@ public class Cours implements Serializable{
 	@ManyToOne
 	private Matiere matiere;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public LocalDate getDate() {
 		return date;
 	}

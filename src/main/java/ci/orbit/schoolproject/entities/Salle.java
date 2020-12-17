@@ -20,6 +20,13 @@ public class Salle implements Serializable {
 	@OneToMany(mappedBy = "salle")
 	private List<Classe> classes;
 	
+	public Salle(Long id, String designation, Batiment batiment, List<Classe> classes) {
+		super();
+		this.id = id;
+		this.designation = designation;
+		this.batiment = batiment;
+		this.classes = classes;
+	}
 	public List<Classe> getClasses() {
 		return classes;
 	}
