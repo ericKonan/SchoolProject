@@ -7,5 +7,5 @@ import javax.persistence.Entity;
 @Entity
 public class Eleve extends Personne implements Serializable{
 	private Long identifiant;
-	private char sexe;
+
 }
