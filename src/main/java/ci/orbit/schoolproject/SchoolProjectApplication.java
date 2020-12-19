@@ -1,6 +1,5 @@
 package ci.orbit.schoolproject;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +33,9 @@ public class SchoolProjectApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		batimentRepository.save(new Batiment(null,"Batiment A",null));
 		Date today = new Date();
-		SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
-		String dt = formater.format(today);
-		//eleveRepository.save(new Eleve(null,"Eric","Konan","M",52,dt));
+		eleveRepository.save(new Eleve(null,"Dilmar","DeRozan","M",52,today));
+		eleveRepository.save(new Eleve(null,"Stephen","Curry","M",51,today));
+		eleveRepository.save(new Eleve(null,"Chris","Paul","M",50,today));
 	}
 
 }

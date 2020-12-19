@@ -8,21 +8,21 @@ import javax.persistence.Id;
 
 @Entity
 public class Eleve extends Personne implements Serializable{
-	private Long identifiant;
+	private int identifiant;
 	private Date  dateNaissance;
 	
+
+
 	
-	
-	public Eleve(Long id, String nom, String prenom, char sexe, Long identifiant, Date dateNaissance) {
+	public Eleve(Long id, String nom, String prenom, String sexe, int identifiant, Date dateNaissance) {
 		super(id, nom, prenom, sexe);
 		this.identifiant = identifiant;
 		this.dateNaissance = dateNaissance;
 	}
-
-	public Long getIdentifiant() {
+	public int getIdentifiant() {
 		return identifiant;
 	}
-	public void setIdentifiant(Long identifiant) {
+	public void setIdentifiant(int identifiant) {
 		this.identifiant = identifiant;
 	}
 	public Date getDateNaissance() {

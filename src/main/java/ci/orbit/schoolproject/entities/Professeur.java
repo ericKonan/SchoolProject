@@ -18,7 +18,7 @@ public class Professeur extends Personne implements Serializable{
 	Set<Matiere> matieres;
 	
 	
-	public Professeur(Long id, String nom, String prenom, char sexe, String matricule, Long contact) {
+	public Professeur(Long id, String nom, String prenom, String sexe, String matricule, Long contact) {
 		super(id, nom, prenom, sexe);
 		this.matricule = matricule;
 		this.contact = contact;
