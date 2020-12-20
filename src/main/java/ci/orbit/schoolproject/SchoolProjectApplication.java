@@ -7,8 +7,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import ci.orbit.schoolproject.dao.AnneescolaireRepository;
 import ci.orbit.schoolproject.dao.BatimentRepository;
+import ci.orbit.schoolproject.dao.CoursRepository;
 import ci.orbit.schoolproject.dao.EleveRepository;
+import ci.orbit.schoolproject.dao.InscriptionRepository;
+import ci.orbit.schoolproject.dao.MatiereRepository;
+import ci.orbit.schoolproject.dao.ProfesseurRepository;
 import ci.orbit.schoolproject.dao.SalleRepository;
 import ci.orbit.schoolproject.entities.Batiment;
 import ci.orbit.schoolproject.entities.Eleve;
@@ -23,6 +28,22 @@ public class SchoolProjectApplication implements CommandLineRunner {
 	
 	@Autowired
 	private EleveRepository eleveRepository;
+	
+	@Autowired
+	private ProfesseurRepository professeurRepository;
+	
+	@Autowired
+	private MatiereRepository matiereRepository;
+	
+	@Autowired
+	private InscriptionRepository inscriptionRepository;
+	
+	@Autowired
+	private CoursRepository coursRepository;
+	
+	@Autowired
+	private AnneescolaireRepository anneescolaireRepository;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SchoolProjectApplication.class, args);
