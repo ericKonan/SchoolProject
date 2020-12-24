@@ -11,16 +11,17 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Professeur extends Personne implements Serializable{
-	
+	@Id
 	private String matricule;
 	private Long contact;
 	@ManyToMany
 	Set<Matiere> matieres;
-	
-	
-	public Professeur(Long id, String nom, String prenom, String sexe, String matricule, Long contact,
-			Set<Matiere> matieres) {
-		super(id, nom, prenom, sexe);
+	public Professeur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Professeur(String nom, String prenom, String sexe, String matricule, Long contact, Set<Matiere> matieres) {
+		super(nom, prenom, sexe);
 		this.matricule = matricule;
 		this.contact = contact;
 		this.matieres = matieres;
@@ -43,6 +44,7 @@ public class Professeur extends Personne implements Serializable{
 	public void setMatieres(Set<Matiere> matieres) {
 		this.matieres = matieres;
 	}
+	
 	
 	
 }

@@ -54,9 +54,9 @@ public class SchoolProjectApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		batimentRepository.save(new Batiment(null,"Batiment A",null));
 		Date today = new Date();
-		eleveRepository.save(new Eleve(null,"Dilmar","DeRozan","M",52,today));
-		eleveRepository.save(new Eleve(null,"Stephen","Curry","M",51,today));
-		eleveRepository.save(new Eleve(null,"Chris","Paul","M",50,today));
+		//eleveRepository.save(new Eleve(null,"Dilmar","DeRozan","M",52,today));
+		//eleveRepository.save(new Eleve(null,"Stephen","Curry","M",51,today));
+		//eleveRepository.save(new Eleve(null,"Chris","Paul","M",50,today));
 	}
 
 }

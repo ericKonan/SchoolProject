@@ -8,23 +8,18 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class Personne {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 	private String nom;
 	private String prenom;
 	private String sexe;
-	public Personne(Long id, String nom, String prenom, String sexe) {
+	public Personne() {
 		super();
-		this.id = id;
+		// TODO Auto-generated constructor stub
+	}
+	public Personne(String nom, String prenom, String sexe) {
+		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.sexe = sexe;
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
 	}
 	public String getNom() {
 		return nom;
@@ -44,6 +39,7 @@ public abstract class Personne {
 	public void setSexe(String sexe) {
 		this.sexe = sexe;
 	}
+	
 	
 	
 	
