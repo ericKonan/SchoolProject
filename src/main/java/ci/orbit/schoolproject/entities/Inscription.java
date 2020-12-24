@@ -1,7 +1,7 @@
 package ci.orbit.schoolproject.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +14,7 @@ public class Inscription implements Serializable{
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id ;
-	private LocalDate date ;
+	private Date date ;
 	@ManyToOne
 	private Classe classe;
 	@ManyToOne
@@ -28,10 +28,10 @@ public class Inscription implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public LocalDate getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public Classe getClasse() {

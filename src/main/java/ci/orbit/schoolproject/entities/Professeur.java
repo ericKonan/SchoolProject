@@ -18,11 +18,12 @@ public class Professeur extends Personne implements Serializable{
 	Set<Matiere> matieres;
 	
 	
-	public Professeur(Long id, String nom, String prenom, String sexe, String matricule, Long contact) {
+	public Professeur(Long id, String nom, String prenom, String sexe, String matricule, Long contact,
+			Set<Matiere> matieres) {
 		super(id, nom, prenom, sexe);
 		this.matricule = matricule;
 		this.contact = contact;
-		
+		this.matieres = matieres;
 	}
 	public String getMatricule() {
 		return matricule;
@@ -35,6 +36,12 @@ public class Professeur extends Personne implements Serializable{
 	}
 	public void setContact(Long contact) {
 		this.contact = contact;
+	}
+	public Set<Matiere> getMatieres() {
+		return matieres;
+	}
+	public void setMatieres(Set<Matiere> matieres) {
+		this.matieres = matieres;
 	}
 	
 	
