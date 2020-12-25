@@ -17,11 +17,9 @@ public class Batiment implements Serializable {
 	@OneToMany(mappedBy = "batiment")
 	private List<Salle> salles;
 	
-	public Batiment(Long id, String designation, List<Salle> salles) {
+	public Batiment(String designation) {
 		super();
-		this.id = id;
 		this.designation = designation;
-		this.salles = salles;
 	}
 	public List<Salle> getSalles() {
 		return salles;

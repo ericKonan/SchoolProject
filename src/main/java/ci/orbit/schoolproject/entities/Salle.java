@@ -20,36 +20,48 @@ public class Salle implements Serializable {
 	@OneToMany(mappedBy = "salle")
 	private List<Classe> classes;
 	
-	public Salle(Long id, String designation, Batiment batiment, List<Classe> classes) {
+	public Salle() {
 		super();
-		this.id = id;
+		// TODO Auto-generated constructor stub
+	}
+
+	public Salle(String designation, Batiment batiment) {
+		super();
 		this.designation = designation;
 		this.batiment = batiment;
-		this.classes = classes;
 	}
-	public List<Classe> getClasses() {
-		return classes;
-	}
-	public void setClasses(List<Classe> classes) {
-		this.classes = classes;
-	}
-	public Batiment getBatiment() {
-		return batiment;
-	}
-	public void setBatiment(Batiment batiment) {
-		this.batiment = batiment;
-	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getDesignation() {
 		return designation;
 	}
+
 	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
+
+	public Batiment getBatiment() {
+		return batiment;
+	}
+
+	public void setBatiment(Batiment batiment) {
+		this.batiment = batiment;
+	}
+
+	public List<Classe> getClasses() {
+		return classes;
+	}
+
+	public void setClasses(List<Classe> classes) {
+		this.classes = classes;
+	}
+	
 	
 }

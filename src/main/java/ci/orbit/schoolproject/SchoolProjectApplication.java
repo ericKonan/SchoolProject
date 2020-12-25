@@ -9,14 +9,25 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import ci.orbit.schoolproject.dao.AnneescolaireRepository;
 import ci.orbit.schoolproject.dao.BatimentRepository;
+import ci.orbit.schoolproject.dao.ClasseRepository;
 import ci.orbit.schoolproject.dao.CoursRepository;
 import ci.orbit.schoolproject.dao.EleveRepository;
+import ci.orbit.schoolproject.dao.EmploiDuTempsRepository;
+import ci.orbit.schoolproject.dao.EvaluationRepository;
 import ci.orbit.schoolproject.dao.InscriptionRepository;
 import ci.orbit.schoolproject.dao.MatiereRepository;
+import ci.orbit.schoolproject.dao.MoyenneRepository;
+import ci.orbit.schoolproject.dao.NoteRepository;
 import ci.orbit.schoolproject.dao.ProfesseurRepository;
 import ci.orbit.schoolproject.dao.SalleRepository;
+import ci.orbit.schoolproject.dao.TrimestreRepository;
+import ci.orbit.schoolproject.entities.AnneeScolaire;
 import ci.orbit.schoolproject.entities.Batiment;
+import ci.orbit.schoolproject.entities.Classe;
 import ci.orbit.schoolproject.entities.Eleve;
+import ci.orbit.schoolproject.entities.Salle;
+import ci.orbit.schoolproject.service.IAffectationService;
+import ci.orbit.schoolproject.service.IClasseService;
 
 @SpringBootApplication
 public class SchoolProjectApplication implements CommandLineRunner {
@@ -25,6 +36,9 @@ public class SchoolProjectApplication implements CommandLineRunner {
 	
 	@Autowired
 	private SalleRepository salleRepository;
+	
+	@Autowired
+	private ClasseRepository classeRepository;
 	
 	@Autowired
 	private EleveRepository eleveRepository;
@@ -36,6 +50,21 @@ public class SchoolProjectApplication implements CommandLineRunner {
 	private MatiereRepository matiereRepository;
 	
 	@Autowired
+	private EmploiDuTempsRepository emploiDuTempsRepository;
+	
+	@Autowired
+	private NoteRepository noteRepository;
+	
+	@Autowired
+	private EvaluationRepository evaluationRepository;
+	
+	@Autowired
+	private MoyenneRepository moyenneRepository;
+	
+	@Autowired
+	private TrimestreRepository trimestreRepository;
+	
+	@Autowired
 	private InscriptionRepository inscriptionRepository;
 	
 	@Autowired
@@ -44,6 +73,12 @@ public class SchoolProjectApplication implements CommandLineRunner {
 	@Autowired
 	private AnneescolaireRepository anneescolaireRepository;
 	
+	@Autowired
+	private IAffectationService iAffectationService;
+	
+	@Autowired
+	private IClasseService iClasseService;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SchoolProjectApplication.class, args);
@@ -51,12 +86,32 @@ public class SchoolProjectApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		batimentRepository.save(new Batiment(null,"Batiment A",null));
+		// Test couche DAO
+		Batiment b1 = batimentRepository.save(new Batiment("Batiment A"));
+		
+		Salle s1 = salleRepository.save(new Salle("Salle A", b1));
+		Salle s2 = salleRepository.save(new Salle("Salle B", b1));
+		Salle s3 = salleRepository.save(new Salle("Salle C", b1));
+		Salle s4 = salleRepository.save(new Salle("Salle D", b1));
+		
 		Date today = new Date();
-		//eleveRepository.save(new Eleve(null,"Dilmar","DeRozan","M",52,today));
-		//eleveRepository.save(new Eleve(null,"Stephen","Curry","M",51,today));
-		//eleveRepository.save(new Eleve(null,"Chris","Paul","M",50,today));
+		Eleve e1 = eleveRepository.save(new Eleve("Dilmar","DeRozan","M",today));
+		Eleve e2 = eleveRepository.save(new Eleve("Stephen","Curry","M",today));
+		Eleve e3 = eleveRepository.save(new Eleve("Chris","Paul","M",today));
+		
+		Classe cl1 = classeRepository.save( new Classe("6eme 1", "6e") );
+		Classe cl2 = classeRepository.save( new Classe("6eme 2", "6e") );
+		Classe cl3 = classeRepository.save( new Classe("5eme", "5e") );
+		Classe cl4 = classeRepository.save( new Classe("4eme", "4e") );
+		
+		AnneeScolaire as = anneescolaireRepository.save(new AnneeScolaire("2020-2021"));
+		
+		// Test couche service
+		iAffectationService.affecterClasse((long) 1, s2);
+		iClasseService.eleveInscription(e2.getIdentifiant(), cl1.getId(), as.getId());
+		iClasseService.eleveInscription(e1.getIdentifiant(), cl1.getId(), as.getId());
+		iClasseService.eleveInscription(e3.getIdentifiant(), cl2.getId(), as.getId());
+		
 	}
 
 }

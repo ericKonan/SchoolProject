@@ -22,6 +22,21 @@ public class Inscription implements Serializable{
 	@ManyToOne
 	private AnneeScolaire anneeScolaire;
 	
+	public Inscription() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public Inscription(Date date, Classe classe, Eleve eleve, AnneeScolaire anneeScolaire) {
+		super();
+		this.date = date;
+		this.classe = classe;
+		this.eleve = eleve;
+		this.anneeScolaire = anneeScolaire;
+	}
+
+
 	public Long getId() {
 		return id;
 	}

@@ -18,6 +18,21 @@ public class Classe implements Serializable {
 	@ManyToOne
 	private Salle salle;
 	
+	
+	
+	public Classe() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public Classe(String designation, String niveau) {
+		super();
+		this.designation = designation;
+		Niveau = niveau;
+	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -35,6 +50,16 @@ public class Classe implements Serializable {
 	}
 	public void setNiveau(String niveau) {
 		Niveau = niveau;
+	}
+
+
+	public Salle getSalle() {
+		return salle;
+	}
+
+
+	public void setSalle(Salle salle) {
+		this.salle = salle;
 	}
 	
 }

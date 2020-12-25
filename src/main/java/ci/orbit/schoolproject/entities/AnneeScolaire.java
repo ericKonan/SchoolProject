@@ -19,10 +19,8 @@ public class AnneeScolaire implements Serializable {
 	public AnneeScolaire() {
 		// TODO Auto-generated constructor stub
 	}
-	public AnneeScolaire(Long id, String designation, List<Trimestre> trimestre) {
-		this.id = id;
+	public AnneeScolaire(String designation) {
 		this.designation = designation;
-		this.trimestres = trimestre;
 	}
 	public Long getId() {
 		return id;

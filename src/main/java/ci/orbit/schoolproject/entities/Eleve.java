@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Eleve extends Personne implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int identifiant;
+	private Long identifiant;
 	private Date  dateNaissance;
 	@OneToMany(mappedBy="eleve")
 	private List<Note> notes;
@@ -21,16 +21,15 @@ public class Eleve extends Personne implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Eleve(String nom, String prenom, String sexe, int identifiant, Date dateNaissance, List<Note> notes) {
+
+	public Eleve(String nom, String prenom, String sexe, Date dateNaissance) {
 		super(nom, prenom, sexe);
-		this.identifiant = identifiant;
 		this.dateNaissance = dateNaissance;
-		this.notes = notes;
 	}
-	public int getIdentifiant() {
+	public Long getIdentifiant() {
 		return identifiant;
 	}
-	public void setIdentifiant(int identifiant) {
+	public void setIdentifiant(Long identifiant) {
 		this.identifiant = identifiant;
 	}
 	public Date getDateNaissance() {
