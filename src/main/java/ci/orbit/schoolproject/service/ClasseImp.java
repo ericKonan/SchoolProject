@@ -50,7 +50,7 @@ public class ClasseImp implements IClasseService {
 	}
 
 	@Override
-	public List<Matiere> getEmploiDTempsByClasse(Long idClasse) {
+	public List<Matiere> getEmploiDuTempsByClasse(Long idClasse) {
 		// TODO Auto-generated method stub
 		return null;
 	}

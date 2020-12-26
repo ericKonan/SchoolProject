@@ -11,7 +11,7 @@ import ci.orbit.schoolproject.entities.Matiere;
 public interface IClasseService {
 	public void setEleveInscription(Long idEeleve, Long idClasse, Long idAnnee );
 	public List<Eleve> listEleveByClasse(Long idClasse, Inscription inscription);
-	public List<Matiere> getEmploiDTempsByClasse(Long idClasse);
+	public List<Matiere> getEmploiDuTempsByClasse(Long idClasse);
 	public void setProfesseurCours(Long idClasse, Long idProfesseur, Long idMatiere);
 	public void setEvaluationClasse(Long idClasse, Long idProfesseur);
 	
