@@ -24,8 +24,7 @@ public class AffectationServiceImp implements IAffectationService{
 
 	@Override
 	public void affecterClasse(Long idClasse, Salle salle) {
-		Optional<Classe> optional = classeRepository.findById(idClasse);
-		Classe cl = optional.get();
+		Classe cl  = classeRepository.findById(idClasse).get();
 		cl.setSalle(salle);
 		
 		

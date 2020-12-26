@@ -5,13 +5,14 @@ import java.util.List;
 import ci.orbit.schoolproject.entities.AnneeScolaire;
 import ci.orbit.schoolproject.entities.Classe;
 import ci.orbit.schoolproject.entities.Eleve;
+import ci.orbit.schoolproject.entities.Inscription;
 import ci.orbit.schoolproject.entities.Matiere;
 
 public interface IClasseService {
-	public void eleveInscription(Long idEeleve, Long idClasse, Long idAnnee );
-	public List<Eleve> eleveParClasse(int idClasse);
-	public List<Matiere> emploiDtParClasse(int idClasse);
-	public void faireCours(int idClasse, int idProfesseur, int idMatiere);
-	public void evaluerClasse(int idClasse, int idProfesseur);
+	public void setEleveInscription(Long idEeleve, Long idClasse, Long idAnnee );
+	public List<Eleve> listEleveByClasse(Long idClasse, Inscription inscription);
+	public List<Matiere> getEmploiDTempsByClasse(Long idClasse);
+	public void setProfesseurCours(Long idClasse, Long idProfesseur, Long idMatiere);
+	public void setEvaluationClasse(Long idClasse, Long idProfesseur);
 	
 }

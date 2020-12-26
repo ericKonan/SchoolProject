@@ -1,6 +1,7 @@
 package ci.orbit.schoolproject;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,6 +26,7 @@ import ci.orbit.schoolproject.entities.AnneeScolaire;
 import ci.orbit.schoolproject.entities.Batiment;
 import ci.orbit.schoolproject.entities.Classe;
 import ci.orbit.schoolproject.entities.Eleve;
+import ci.orbit.schoolproject.entities.Inscription;
 import ci.orbit.schoolproject.entities.Salle;
 import ci.orbit.schoolproject.service.IAffectationService;
 import ci.orbit.schoolproject.service.IClasseService;
@@ -106,11 +108,15 @@ public class SchoolProjectApplication implements CommandLineRunner {
 		
 		AnneeScolaire as = anneescolaireRepository.save(new AnneeScolaire("2020-2021"));
 		
+		inscriptionRepository.listEleveByClasse(cl1.getId()).forEach(ins->{
+			System.out.println(ins.getNom());
+		});;
+		
 		// Test couche service
 		iAffectationService.affecterClasse((long) 1, s2);
-		iClasseService.eleveInscription(e2.getIdentifiant(), cl1.getId(), as.getId());
-		iClasseService.eleveInscription(e1.getIdentifiant(), cl1.getId(), as.getId());
-		iClasseService.eleveInscription(e3.getIdentifiant(), cl2.getId(), as.getId());
+		iClasseService.setEleveInscription(e2.getIdentifiant(), cl1.getId(), as.getId());
+		iClasseService.setEleveInscription(e1.getIdentifiant(), cl1.getId(), as.getId());
+		iClasseService.setEleveInscription(e3.getIdentifiant(), cl2.getId(), as.getId());
 		
 	}
 
