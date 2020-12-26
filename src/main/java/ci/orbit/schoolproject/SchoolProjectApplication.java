@@ -113,7 +113,7 @@ public class SchoolProjectApplication implements CommandLineRunner {
 		});;
 		
 		// Test couche service
-		iAffectationService.affecterClasse((long) 1, s2);
+		iAffectationService.setClasseAffectation((long) 1, s2);
 		iClasseService.setEleveInscription(e2.getIdentifiant(), cl1.getId(), as.getId());
 		iClasseService.setEleveInscription(e1.getIdentifiant(), cl1.getId(), as.getId());
 		iClasseService.setEleveInscription(e3.getIdentifiant(), cl2.getId(), as.getId());
