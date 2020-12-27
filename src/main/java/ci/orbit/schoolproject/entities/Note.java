@@ -19,8 +19,7 @@ public class Note implements Serializable{
 	private Evaluation evaluation;
 	@ManyToOne
 	private Eleve eleve;
-	public Note(Long id, int total, float valeur, String appreciation, Evaluation evaluation, Eleve eleve) {
-		this.id = id;
+	public Note(int total, float valeur, String appreciation, Evaluation evaluation, Eleve eleve) {
 		this.total = total;
 		this.valeur = valeur;
 		this.appreciation = appreciation;

@@ -16,10 +16,14 @@ public class AnneeScolaire implements Serializable {
 	private String designation;
 	@OneToMany(mappedBy="anneeScolaire")
 	private List<Trimestre> trimestres;
+	@OneToMany(mappedBy="anneeScolaire")
+	private List<Inscription> inscriptions;
 	public AnneeScolaire() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 	public AnneeScolaire(String designation) {
+		super();
 		this.designation = designation;
 	}
 	public Long getId() {
@@ -34,13 +38,18 @@ public class AnneeScolaire implements Serializable {
 	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
-	public List<Trimestre> getTrimestre() {
+	public List<Trimestre> getTrimestres() {
 		return trimestres;
 	}
-	public void setTrimestre(List<Trimestre> trimestre) {
-		this.trimestres = trimestre;
+	public void setTrimestres(List<Trimestre> trimestres) {
+		this.trimestres = trimestres;
 	}
-	
+	public List<Inscription> getInscriptions() {
+		return inscriptions;
+	}
+	public void setInscriptions(List<Inscription> inscriptions) {
+		this.inscriptions = inscriptions;
+	}
 	
 	
 }

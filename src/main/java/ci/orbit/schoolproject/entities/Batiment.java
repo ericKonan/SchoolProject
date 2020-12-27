@@ -39,5 +39,13 @@ public class Batiment implements Serializable {
 	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
+	@Override
+	public String toString() {
+		return "Batiment [id=" + id + ", designation=" + designation + ", salles=" + salles + ", getSalles()="
+				+ getSalles() + ", getId()=" + getId() + ", getDesignation()=" + getDesignation() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
+	
+	
 	
 }

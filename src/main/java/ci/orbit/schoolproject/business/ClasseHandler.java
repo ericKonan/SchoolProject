@@ -1,4 +1,4 @@
-package ci.orbit.schoolproject.service;
+package ci.orbit.schoolproject.business;
 
 import java.util.Date;
 import java.util.List;
@@ -21,7 +21,7 @@ import ci.orbit.schoolproject.entities.Matiere;
 
 @Service
 @Transactional
-public class ClasseImp implements IClasseService {
+public class ClasseHandler implements ClasseInterface {
 	
 	@Autowired
 	private ClasseRepository classeRepository;
@@ -35,19 +35,7 @@ public class ClasseImp implements IClasseService {
 	@Autowired
 	private InscriptionRepository inscriptionRepository;
 
-	@Override
-	public void setEleveInscription(Long idEeleve, Long idClasse, Long idAnnee) {
-		Eleve elv = eleveRepository.getOne(idEeleve);
-		Classe cls = classeRepository.getOne(idClasse);
-		AnneeScolaire as = anneescolaireRepository.getOne(idAnnee);
-		inscriptionRepository.save(new Inscription(new Date(), cls, elv, as));
-	}
-
-	@Override
-	public List<Eleve> listEleveByClasse(Long idClasse, Inscription inscription) {
-		//Query q = entityManager.createQuery("");
-		return null;
-	}
+	
 
 	@Override
 	public List<Matiere> getEmploiDuTempsByClasse(Long idClasse) {
@@ -65,6 +53,42 @@ public class ClasseImp implements IClasseService {
 	public void setEvaluationClasse(Long idClasse, Long idProfesseur) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Classe createClasse(String designation, String niveau) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Classe readClasse(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Classe updateClasse(Long id, String designation, String niveau) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteClasse(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Classe> listClasse(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Eleve> listEleveByClasse(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

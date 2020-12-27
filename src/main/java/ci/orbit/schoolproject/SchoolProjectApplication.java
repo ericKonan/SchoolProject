@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import ci.orbit.schoolproject.business.SalleInterface;
+import ci.orbit.schoolproject.business.ClasseInterface;
 import ci.orbit.schoolproject.dao.AnneescolaireRepository;
 import ci.orbit.schoolproject.dao.BatimentRepository;
 import ci.orbit.schoolproject.dao.ClasseRepository;
@@ -28,8 +30,6 @@ import ci.orbit.schoolproject.entities.Classe;
 import ci.orbit.schoolproject.entities.Eleve;
 import ci.orbit.schoolproject.entities.Inscription;
 import ci.orbit.schoolproject.entities.Salle;
-import ci.orbit.schoolproject.service.IAffectationService;
-import ci.orbit.schoolproject.service.IClasseService;
 
 @SpringBootApplication
 public class SchoolProjectApplication implements CommandLineRunner {
@@ -76,10 +76,10 @@ public class SchoolProjectApplication implements CommandLineRunner {
 	private AnneescolaireRepository anneescolaireRepository;
 	
 	@Autowired
-	private IAffectationService iAffectationService;
+	private SalleInterface iAffectationService;
 	
 	@Autowired
-	private IClasseService iClasseService;
+	private ClasseInterface iClasseService;
 	
 	
 	public static void main(String[] args) {

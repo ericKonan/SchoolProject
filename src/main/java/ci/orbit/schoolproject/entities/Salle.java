@@ -62,6 +62,16 @@ public class Salle implements Serializable {
 	public void setClasses(List<Classe> classes) {
 		this.classes = classes;
 	}
+
+	@Override
+	public String toString() {
+		return "Salle [id=" + id + ", designation=" + designation + ", batiment=" + batiment + ", classes=" + classes
+				+ ", getId()=" + getId() + ", getDesignation()=" + getDesignation() + ", getBatiment()=" + getBatiment()
+				+ ", getClasses()=" + getClasses() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
+	
+	
 	
 	
 }

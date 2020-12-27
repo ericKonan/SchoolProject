@@ -1,4 +1,4 @@
-package ci.orbit.schoolproject.service;
+package ci.orbit.schoolproject.business;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,12 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ci.orbit.schoolproject.dao.ClasseRepository;
 import ci.orbit.schoolproject.dao.SalleRepository;
+import ci.orbit.schoolproject.entities.Batiment;
 import ci.orbit.schoolproject.entities.Classe;
 import ci.orbit.schoolproject.entities.Salle;
 
 @Service
 @Transactional
-public class AffectationServiceImp implements IAffectationService{
+public class SalleHandler implements SalleInterface{
 	
 	@Autowired
 	private SalleRepository salleRepository;
@@ -27,6 +28,24 @@ public class AffectationServiceImp implements IAffectationService{
 		Classe cl  = classeRepository.findById(idClasse).get();
 		cl.setSalle(salle);
 		
+		
+	}
+
+	@Override
+	public Salle createSalle(String designation, Batiment batiment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Salle updateSAlle(Long id, String designation, Batiment batiment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteSalle(Long id) {
+		// TODO Auto-generated method stub
 		
 	}
 
