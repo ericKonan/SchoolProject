@@ -9,9 +9,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import ci.orbit.schoolproject.business.SalleInterface;
+import ci.orbit.schoolproject.business.BatimentInterface;
 import ci.orbit.schoolproject.business.ClasseInterface;
+import ci.orbit.schoolproject.business.EleveInterface;
 import ci.orbit.schoolproject.dao.AnneescolaireRepository;
-import ci.orbit.schoolproject.dao.BatimentRepository;
 import ci.orbit.schoolproject.dao.ClasseRepository;
 import ci.orbit.schoolproject.dao.CoursRepository;
 import ci.orbit.schoolproject.dao.EleveRepository;
@@ -30,11 +31,12 @@ import ci.orbit.schoolproject.entities.Classe;
 import ci.orbit.schoolproject.entities.Eleve;
 import ci.orbit.schoolproject.entities.Inscription;
 import ci.orbit.schoolproject.entities.Salle;
+import ci.orbit.schoolproject.exception.NotFoundException;
 
 @SpringBootApplication
 public class SchoolProjectApplication implements CommandLineRunner {
 	@Autowired
-	private BatimentRepository batimentRepository;
+	private BatimentInterface batimentInterface;
 	
 	@Autowired
 	private SalleRepository salleRepository;
@@ -76,10 +78,10 @@ public class SchoolProjectApplication implements CommandLineRunner {
 	private AnneescolaireRepository anneescolaireRepository;
 	
 	@Autowired
-	private SalleInterface iAffectationService;
+	private SalleInterface salleInterface;
 	
 	@Autowired
-	private ClasseInterface iClasseService;
+	private EleveInterface eleveInterface;
 	
 	
 	public static void main(String[] args) {
@@ -89,12 +91,7 @@ public class SchoolProjectApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// Test couche DAO
-		Batiment b1 = batimentRepository.save(new Batiment("Batiment A"));
-		
-		Salle s1 = salleRepository.save(new Salle("Salle A", b1));
-		Salle s2 = salleRepository.save(new Salle("Salle B", b1));
-		Salle s3 = salleRepository.save(new Salle("Salle C", b1));
-		Salle s4 = salleRepository.save(new Salle("Salle D", b1));
+		//Batiment b1 = batimentRepository.save(new Batiment("Batiment A"));
 		
 		Date today = new Date();
 		Eleve e1 = eleveRepository.save(new Eleve("Dilmar","DeRozan","M",today));
@@ -113,10 +110,28 @@ public class SchoolProjectApplication implements CommandLineRunner {
 		});;
 		
 		// Test couche service
-		iAffectationService.setClasseAffectation((long) 1, s2);
-		iClasseService.setEleveInscription(e2.getIdentifiant(), cl1.getId(), as.getId());
-		iClasseService.setEleveInscription(e1.getIdentifiant(), cl1.getId(), as.getId());
-		iClasseService.setEleveInscription(e3.getIdentifiant(), cl2.getId(), as.getId());
+		Batiment btm1 = batimentInterface.createBatiment("BAT A");
+		Batiment btm2 = batimentInterface.createBatiment("BAT B");
+		
+		Salle s1 = salleRepository.save(new Salle("Salle A", btm1));
+		Salle s2 = salleRepository.save(new Salle("Salle B", btm1));
+		Salle s3 = salleRepository.save(new Salle("Salle C", btm1));
+		Salle s4 = salleRepository.save(new Salle("Salle D", btm2));
+		try {
+			 List<Salle> sallles = batimentInterface.listSalle((long) 1);			
+			 sallles.forEach(s->{ 
+				 System.out.println(s.getDesignation());
+			 });
+			 
+		}catch (NotFoundException e){
+			System.out.println(e.getMessage());
+		}
+		
+		
+		/*salleInterface.setClasseAffectation((long) 1, s2);
+		eleveInterface.setEleveInscription(e2.getIdentifiant(), cl1.getId(), as.getId());
+		eleveInterface.setEleveInscription(e1.getIdentifiant(), cl1.getId(), as.getId());
+		eleveInterface.setEleveInscription(e3.getIdentifiant(), cl2.getId(), as.getId());*/
 		
 	}
 

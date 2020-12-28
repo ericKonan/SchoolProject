@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ci.orbit.schoolproject.dao.AnneescolaireRepository;
 import ci.orbit.schoolproject.dao.ClasseRepository;
@@ -18,7 +20,8 @@ import ci.orbit.schoolproject.entities.Inscription;
 import ci.orbit.schoolproject.entities.Matiere;
 import ci.orbit.schoolproject.entities.Moyenne;
 import ci.orbit.schoolproject.entities.Note;
-
+@Service
+@Transactional
 public class ELeveHandler implements EleveInterface {
 	
 	@Autowired

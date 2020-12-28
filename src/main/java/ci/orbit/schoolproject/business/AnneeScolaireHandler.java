@@ -2,9 +2,13 @@ package ci.orbit.schoolproject.business;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import ci.orbit.schoolproject.entities.AnneeScolaire;
 import ci.orbit.schoolproject.entities.Eleve;
-
+@Service
+@Transactional
 public class AnneeScolaireHandler implements AnneeSoclaireInterface{
 
 	@Override

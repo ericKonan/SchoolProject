@@ -2,10 +2,14 @@ package ci.orbit.schoolproject.business;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import ci.orbit.schoolproject.entities.Cours;
 import ci.orbit.schoolproject.entities.Evaluation;
 import ci.orbit.schoolproject.entities.Professeur;
-
+@Service
+@Transactional
 public class ProfesseurHandler implements ProfesseurInterface{
 
 	@Override
