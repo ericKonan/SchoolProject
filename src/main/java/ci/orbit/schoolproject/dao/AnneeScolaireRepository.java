@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import ci.orbit.schoolproject.entities.AnneeScolaire;
 
 @Repository
-public interface AnneescolaireRepository extends JpaRepository<AnneeScolaire, Long> {
+public interface AnneeScolaireRepository extends JpaRepository<AnneeScolaire, Long> {
 
 }

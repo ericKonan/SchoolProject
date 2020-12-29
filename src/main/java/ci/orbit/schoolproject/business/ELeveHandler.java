@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ci.orbit.schoolproject.dao.AnneescolaireRepository;
+import ci.orbit.schoolproject.dao.AnneeScolaireRepository;
 import ci.orbit.schoolproject.dao.ClasseRepository;
 import ci.orbit.schoolproject.dao.EleveRepository;
 import ci.orbit.schoolproject.dao.InscriptionRepository;
@@ -31,15 +31,15 @@ public class ELeveHandler implements EleveInterface {
 	private EleveRepository eleveRepository;
 	
 	@Autowired
-	private AnneescolaireRepository anneescolaireRepository;
+	private AnneeScolaireRepository anneescolaireRepository;
 	
 	@Autowired
 	private InscriptionRepository inscriptionRepository;
 
 	@Override
 	public Eleve createEleve(String nom, String prenom, String sexe, Date dateNaissance) {
-		// TODO Auto-generated method stub
-		return null;
+		Eleve eleve = eleveRepository.save(new Eleve(nom, prenom, sexe, dateNaissance));
+		return eleve;
 	}
 
 	@Override

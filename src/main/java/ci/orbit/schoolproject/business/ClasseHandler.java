@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ci.orbit.schoolproject.dao.AnneescolaireRepository;
+import ci.orbit.schoolproject.dao.AnneeScolaireRepository;
 import ci.orbit.schoolproject.dao.ClasseRepository;
 import ci.orbit.schoolproject.dao.EleveRepository;
 import ci.orbit.schoolproject.dao.InscriptionRepository;
@@ -30,7 +30,7 @@ public class ClasseHandler implements ClasseInterface {
 	private EleveRepository eleveRepository;
 	
 	@Autowired
-	private AnneescolaireRepository anneescolaireRepository;
+	private AnneeScolaireRepository anneescolaireRepository;
 	
 	@Autowired
 	private InscriptionRepository inscriptionRepository;

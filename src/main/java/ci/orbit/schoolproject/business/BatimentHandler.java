@@ -35,13 +35,14 @@ public class BatimentHandler implements BatimentInterface {
 
 	@Override
 	public Batiment updateBatiment(Long id, String designation) {
-		// TODO Auto-generated method stub
-		return null;
+		Batiment batiment = batimentRepository.findById(id).get();
+		batiment.setDesignation(designation);
+		return batiment;
 	}
 
 	@Override
 	public void deleteBatiment(Long id) {
-		// TODO Auto-generated method stub
+		batimentRepository.deleteById(id);
 		
 	}
 
