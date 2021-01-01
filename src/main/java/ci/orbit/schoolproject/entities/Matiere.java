@@ -17,6 +17,14 @@ public class Matiere implements Serializable {
 	@ManyToMany(mappedBy = "matieres")
 	Set<Professeur> professeurs;
 	
+	public Matiere(String designation) {
+		super();
+		this.designation = designation;
+	}
+	public Matiere() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Long getId() {
 		return id;
 	}

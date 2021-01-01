@@ -20,14 +20,14 @@ public class EmploiDuTemps implements Serializable {
 	private Classe classe;
 	@ManyToOne
 	private Matiere matiere;
-	public EmploiDuTemps(Long id, String jour, Time heuredebut, Time heurefin, Classe classe, Matiere matiere) {
-		this.id = id;
+	public EmploiDuTemps(String jour, Time heuredebut, Time heurefin, Classe classe, Matiere matiere) {
 		this.jour = jour;
 		this.heuredebut = heuredebut;
 		this.heurefin = heurefin;
 		this.classe = classe;
 		this.matiere = matiere;
 	}
+	
 	public Long getId() {
 		return id;
 	}
