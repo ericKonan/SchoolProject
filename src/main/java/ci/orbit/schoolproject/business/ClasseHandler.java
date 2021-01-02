@@ -1,5 +1,6 @@
 package ci.orbit.schoolproject.business;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +22,7 @@ import ci.orbit.schoolproject.entities.EmploiDuTemps;
 import ci.orbit.schoolproject.entities.Inscription;
 import ci.orbit.schoolproject.entities.Matiere;
 import ci.orbit.schoolproject.entities.Semaine;
+import ci.orbit.schoolproject.exception.NotFoundException;
 
 @Service
 @Transactional
@@ -39,7 +41,7 @@ public class ClasseHandler implements ClasseInterface {
 	private InscriptionRepository inscriptionRepository;
 	
 	@Autowired
-	private EmploiDuTempsRepository emploiDuTempsRepository;
+	private EmploiDuTempsRepository<Matiere> emploiDuTempsRepository;
 	
 	@Override
 	public void setProfesseurCours(Long idClasse, Long idProfesseur, Long idMatiere) {
@@ -55,8 +57,8 @@ public class ClasseHandler implements ClasseInterface {
 
 	@Override
 	public Classe createClasse(String designation, String niveau) {
-		// TODO Auto-generated method stub
-		return null;
+		Classe cls = classeRepository.save(new Classe(designation, niveau));
+		return cls;
 	}
 
 	@Override
@@ -84,21 +86,42 @@ public class ClasseHandler implements ClasseInterface {
 	}
 
 	@Override
-	public List<Eleve> listEleveByClasse(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Eleve> listEleveByClasse(Classe classe, AnneeScolaire annee) throws NotFoundException{
+		ArrayList<Eleve> eleves = new ArrayList<Eleve>();
+		List<Inscription> inscription = inscriptionRepository.findByClasseAndAnneeScolaire(classe, annee);
+		if(!inscription.isEmpty()) {		
+			inscription.forEach(e->{eleves.add(e.getEleve());});
+			return eleves;
+		}
+		else{
+			throw new NotFoundException("Liste d'élèves non trouvée");
+		}
 	}
 
 	@Override
-	public List<Matiere> getMatiereByClasse(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<EmploiDuTemps> getClasseEmploiDuTemps(Classe classe) {
+	public List<Matiere> getMatiereByClasse(Classe classe) throws NotFoundException{
+		ArrayList<Matiere> matieres = new ArrayList<Matiere>();
 		List<EmploiDuTemps> list = emploiDuTempsRepository.findByClasse(classe);
-		return list;
+		if(!list.isEmpty()) {		
+			list.forEach(e->{matieres.add(e.getMatiere());});
+			return matieres;
+		}
+		else{
+			throw new NotFoundException("Liste d'élèves non trouvée");
+		}
+	}
+
+	@Override
+	public List<EmploiDuTemps> getClasseEmploiDuTemps(Classe classe) throws NotFoundException{
+		ArrayList<EmploiDuTemps> emploidt = new ArrayList<EmploiDuTemps>();
+		List<EmploiDuTemps> list = emploiDuTempsRepository.findByClasse(classe);
+		if(!list.isEmpty()) {		
+			list.forEach(e->{emploidt.add(e);});
+			return emploidt;
+		}
+		else{
+			throw new NotFoundException("Emploi du temps non trouvée");
+		}
 	}
 
 }

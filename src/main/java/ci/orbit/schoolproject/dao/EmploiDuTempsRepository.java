@@ -9,6 +9,7 @@ import ci.orbit.schoolproject.entities.Classe;
 import ci.orbit.schoolproject.entities.EmploiDuTemps;
 
 @Repository
-public interface EmploiDuTempsRepository extends JpaRepository<EmploiDuTemps, Long> {
+public interface EmploiDuTempsRepository<T> extends JpaRepository<EmploiDuTemps, Long> {
 	public List<EmploiDuTemps> findByClasse(Classe classe);
+	public List<T> findMatiereByClasse(Classe classe);
 }

@@ -65,7 +65,7 @@ public class ELeveHandler implements EleveInterface {
 		Eleve elv = eleveRepository.getOne(idEeleve);
 		Classe cls = classeRepository.getOne(idClasse);
 		AnneeScolaire as = anneescolaireRepository.getOne(idAnnee);
-		return inscriptionRepository.save(new Inscription(new Date(), cls, elv, as));
+		return (Inscription) inscriptionRepository.save(new Inscription(new Date(), cls, elv, as));
 	}
 
 	@Override

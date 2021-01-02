@@ -1,7 +1,7 @@
 package ci.orbit.schoolproject.entities;
 
 import java.io.Serializable;
-import java.sql.Time;
+import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,13 +14,19 @@ public class EmploiDuTemps implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String jour;
-	private Time heuredebut;
-	private Time heurefin;
+	private LocalTime heuredebut;
+	private LocalTime heurefin;
 	@ManyToOne
 	private Classe classe;
 	@ManyToOne
 	private Matiere matiere;
-	public EmploiDuTemps(String jour, Time heuredebut, Time heurefin, Classe classe, Matiere matiere) {
+	
+	public EmploiDuTemps() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public EmploiDuTemps(String jour, LocalTime heuredebut, LocalTime heurefin, Classe classe, Matiere matiere) {
 		this.jour = jour;
 		this.heuredebut = heuredebut;
 		this.heurefin = heurefin;
@@ -40,16 +46,16 @@ public class EmploiDuTemps implements Serializable {
 	public void setJour(String jour) {
 		this.jour = jour;
 	}
-	public Time getHeuredebut() {
+	public LocalTime getHeuredebut() {
 		return heuredebut;
 	}
-	public void setHeuredebut(Time heuredebut) {
+	public void setHeuredebut(LocalTime heuredebut) {
 		this.heuredebut = heuredebut;
 	}
-	public Time getHeurefin() {
+	public LocalTime getHeurefin() {
 		return heurefin;
 	}
-	public void setHeurefin(Time heurefin) {
+	public void setHeurefin(LocalTime heurefin) {
 		this.heurefin = heurefin;
 	}
 	public Classe getClasse() {

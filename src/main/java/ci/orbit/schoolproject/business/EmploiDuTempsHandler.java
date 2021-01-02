@@ -1,6 +1,6 @@
 package ci.orbit.schoolproject.business;
 
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,11 @@ import ci.orbit.schoolproject.exception.NotFoundException;
 public class EmploiDuTempsHandler implements EmploiDuTempsInterface{
 	
 	@Autowired
-	private EmploiDuTempsRepository emploiDuTempsRepository;
+	private EmploiDuTempsRepository<?> emploiDuTempsRepository;
 
 	@Override
-	public EmploiDuTemps createEmploiDT(String jour, Time heuredebut, Time heurefin, Classe classe, Matiere matiere) {
-		EmploiDuTemps empdt = emploiDuTempsRepository.save(new EmploiDuTemps(jour, heuredebut, heurefin, classe, matiere));
+	public EmploiDuTemps createEmploiDT(String jour, LocalTime heuredebut, LocalTime heurefin, Classe classe, Matiere matiere) {
+		EmploiDuTemps empdt = (EmploiDuTemps) emploiDuTempsRepository.save(new EmploiDuTemps(jour, heuredebut, heurefin, classe, matiere));
 		return empdt;
 	}
 
@@ -38,9 +38,9 @@ public class EmploiDuTempsHandler implements EmploiDuTempsInterface{
 	}
 
 	@Override
-	public EmploiDuTemps updateEmploiDT(Long id, String jour, Time heuredebut, Time heurefin, Classe classe,
+	public EmploiDuTemps updateEmploiDT(Long id, String jour, LocalTime heuredebut, LocalTime heurefin, Classe classe,
 			Matiere matiere) {
-		EmploiDuTemps emp = emploiDuTempsRepository.findById(id).get();
+		EmploiDuTemps emp = (EmploiDuTemps) emploiDuTempsRepository.findById(id).get();
 		emp.setClasse(classe);
 		emp.setMatiere(matiere);
 		emp.setHeuredebut(heuredebut);
