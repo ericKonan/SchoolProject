@@ -60,6 +60,14 @@ public class Classe implements Serializable {
 	public void setInscriptions(List<Inscription> inscriptions) {
 		this.inscriptions = inscriptions;
 	}
+	@Override
+	public String toString() {
+		return "Classe [id=" + id + ", designation=" + designation + ", niveau=" + niveau + ", salle=" + salle
+				+ ", inscriptions=" + inscriptions + "]";
+	}
+	
+	
+	
 	
 	
 	

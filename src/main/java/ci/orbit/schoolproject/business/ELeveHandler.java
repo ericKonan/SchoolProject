@@ -92,22 +92,5 @@ public class ELeveHandler implements EleveInterface {
 		return 0;
 	}
 
-	@Override
-	public Note createNote(float valeur, int total, String appreciation, Evaluation evaluation, Eleve eleve) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Note updateNote(int id, float valeur, int total, String appreciation, Evaluation evaluation, Eleve eleve) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteNote(Long idNote) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }

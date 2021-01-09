@@ -27,29 +27,26 @@ public abstract class Activite {
 	private Classe classe;
 	@ManyToOne
 	private Matiere matiere;
+	@ManyToOne
+	private Trimestre trimestre;
 	
 	
 	public Activite() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Activite(Long id, Date date, Time heuredebut, Time heurefin, Professeur professeur,
-			Classe classe, Matiere matiere) {
+	public Activite(Date date, Time heuredebut, Time heurefin, Professeur professeur,
+			Classe classe, Matiere matiere, Trimestre trimestre) {
 		super();
-		this.id = id;
 		this.date = date;
 		this.heuredebut = heuredebut;
 		this.heurefin = heurefin;
 		this.professeur = professeur;
 		this.classe = classe;
 		this.matiere = matiere;
+		this.trimestre = trimestre;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+
 	public Date getDate() {
 		return date;
 	}
@@ -85,6 +82,12 @@ public abstract class Activite {
 	}
 	public void setMatiere(Matiere matiere) {
 		this.matiere = matiere;
+	}
+	public Trimestre getTrimestre() {
+		return trimestre;
+	}
+	public void setTrimestre(Trimestre trimestre) {
+		this.trimestre = trimestre;
 	}
 	
 }

@@ -18,24 +18,15 @@ import ci.orbit.schoolproject.business.ClasseInterface;
 import ci.orbit.schoolproject.business.EleveInterface;
 import ci.orbit.schoolproject.business.EmploiDuTempsInterface;
 import ci.orbit.schoolproject.business.MatiereInterface;
-import ci.orbit.schoolproject.dao.ClasseRepository;
-import ci.orbit.schoolproject.dao.CoursRepository;
-import ci.orbit.schoolproject.dao.EleveRepository;
-import ci.orbit.schoolproject.dao.EmploiDuTempsRepository;
-import ci.orbit.schoolproject.dao.EvaluationRepository;
-import ci.orbit.schoolproject.dao.InscriptionRepository;
-import ci.orbit.schoolproject.dao.MatiereRepository;
-import ci.orbit.schoolproject.dao.MoyenneRepository;
-import ci.orbit.schoolproject.dao.NoteRepository;
-import ci.orbit.schoolproject.dao.ProfesseurRepository;
+
 import ci.orbit.schoolproject.dao.SalleRepository;
-import ci.orbit.schoolproject.dao.TrimestreRepository;
+
 import ci.orbit.schoolproject.entities.AnneeScolaire;
 import ci.orbit.schoolproject.entities.Batiment;
 import ci.orbit.schoolproject.entities.Classe;
 import ci.orbit.schoolproject.entities.Eleve;
 import ci.orbit.schoolproject.entities.EmploiDuTemps;
-import ci.orbit.schoolproject.entities.Inscription;
+
 import ci.orbit.schoolproject.entities.Matiere;
 import ci.orbit.schoolproject.entities.Salle;
 import ci.orbit.schoolproject.entities.Semaine;

@@ -20,8 +20,7 @@ public class Trimestre implements Serializable {
 	private Date datefin;
 	@ManyToOne
 	private AnneeScolaire anneeScolaire;
-	@OneToMany(mappedBy="trimestre")
-	private List<Moyenne> moyenne;
+	
 	public Trimestre() {
 		// TODO Auto-generated constructor stub
 	}
@@ -55,20 +54,13 @@ public class Trimestre implements Serializable {
 	public void setAnneeScolaire(AnneeScolaire anneeScolaire) {
 		this.anneeScolaire = anneeScolaire;
 	}
-	public List<Moyenne> getMoyenne() {
-		return moyenne;
-	}
-	public void setMoyenne(List<Moyenne> moyenne) {
-		this.moyenne = moyenne;
-	}
-	public Trimestre(Long id, String libelle, Date datedebut, Date datefin, AnneeScolaire anneeScolaire,
-			List<Moyenne> moyenne) {
+	
+	public Trimestre(Long id, String libelle, Date datedebut, Date datefin, AnneeScolaire anneeScolaire) {
 		this.id = id;
 		this.libelle = libelle;
 		this.datedebut = datedebut;
 		this.datefin = datefin;
 		this.anneeScolaire = anneeScolaire;
-		this.moyenne = moyenne;
 	}
 	
 	

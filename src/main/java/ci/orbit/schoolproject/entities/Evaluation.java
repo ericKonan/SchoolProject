@@ -18,11 +18,11 @@ public class Evaluation extends Activite implements Serializable{
 		super();
 	}
 
-	public Evaluation(Long id, Date date, Time heuredebut, Time heurefin, Professeur professeur, Classe classe,
-			Matiere matiere, String type_evaluation, List<Note> notes) {
-		super(id, date, heuredebut, heurefin, professeur, classe, matiere);
+	public Evaluation(Date date, Time heuredebut, Time heurefin, Professeur professeur, Classe classe,
+			Matiere matiere,  Trimestre trimestre, String type_evaluation) {
+		super(date, heuredebut, heurefin, professeur, classe, matiere, trimestre);
 		this.type_evaluation = type_evaluation;
-		this.notes = notes;
+	
 	}
 
 	public String getType_evaluation() {
@@ -39,6 +39,11 @@ public class Evaluation extends Activite implements Serializable{
 
 	public void setNotes(List<Note> notes) {
 		this.notes = notes;
+	}
+
+	@Override
+	public String toString() {
+		return "Evaluation [type_evaluation=" + type_evaluation + ", notes=" + notes + "]";
 	}
 
 	

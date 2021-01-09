@@ -1,6 +1,7 @@
 package ci.orbit.schoolproject.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Matiere implements Serializable {
@@ -15,7 +17,8 @@ public class Matiere implements Serializable {
 	private Long id;
 	private String designation;
 	@ManyToMany(mappedBy = "matieres")
-	Set<Professeur> professeurs;
+	List<Professeur> professeurs;
+
 	
 	public Matiere(String designation) {
 		super();
