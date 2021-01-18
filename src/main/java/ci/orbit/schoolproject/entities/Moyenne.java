@@ -12,19 +12,19 @@ import javax.persistence.ManyToOne;
 public class Moyenne implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private int coefficient;
 	private float moyenneTrim;
 	private float moyenneGen;
-	@ManyToOne
-	private Trimestre trimestre;
+	
 	public Moyenne() {
 		// TODO Auto-generated constructor stub
 	}
-	public Moyenne(Long id, float moyenneTrim, float moyenneGen, Trimestre trimestre) {
+	public Moyenne(Long id, int coefficient, float moyenneTrim, float moyenneGen) {
 		this.id = id;
+		this.coefficient = coefficient;
 		this.moyenneTrim = moyenneTrim;
 		this.moyenneGen = moyenneGen;
-		this.trimestre = trimestre;
-	}
+	}                                                                                                                                                                                                                                                                                                                                                                                                          	                                                                                                                                                                                                                                                                                           
 	public Long getId() {
 		return id;
 	}
@@ -43,11 +43,17 @@ public class Moyenne implements Serializable{
 	public void setMoyenneGen(float moyenneGen) {
 		this.moyenneGen = moyenneGen;
 	}
-	public Trimestre getTrimestre() {
-		return trimestre;
+	
+	public int getCoefficient() {
+		return coefficient;
 	}
-	public void setTrimestre(Trimestre trimestre) {
-		this.trimestre = trimestre;
+	public void setCoefficient(int coefficient) {
+		this.coefficient = coefficient;
+	}
+	@Override
+	public String toString() {
+		return "Moyenne [id=" + id + ", coefficient=" + coefficient + ", moyenneTrim=" + moyenneTrim + ", moyenneGen="
+				+ moyenneGen +  "]";
 	}
 	
 	

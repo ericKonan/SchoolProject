@@ -40,4 +40,8 @@ public class Matiere implements Serializable {
 	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
+	@Override
+	public String toString() {
+		return "Matiere [id=" + id + ", designation=" + designation + ", professeurs=" + professeurs + "]";
+	}
 }

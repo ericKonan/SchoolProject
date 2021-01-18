@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import ci.orbit.schoolproject.dao.EvaluationRepository;
 import ci.orbit.schoolproject.dao.NoteRepository;
+import ci.orbit.schoolproject.entities.AnneeScolaire;
 import ci.orbit.schoolproject.entities.Eleve;
 import ci.orbit.schoolproject.entities.EmploiDuTemps;
 import ci.orbit.schoolproject.entities.Evaluation;
 import ci.orbit.schoolproject.entities.Matiere;
+import ci.orbit.schoolproject.entities.Moyenne;
 import ci.orbit.schoolproject.entities.Note;
 import ci.orbit.schoolproject.entities.Trimestre;
 import ci.orbit.schoolproject.exception.NotFoundException;
@@ -26,8 +28,8 @@ public class NoteHandler implements NoteInterface {
 
 	@Override
 	public Note createNote(float valeur, int total, String appreciation, Evaluation evaluation, Eleve eleve) {
-		// TODO Auto-generated method stub
-		return null;
+		Note note = noteRepository.save(new Note(total, valeur, appreciation, evaluation, eleve));
+		return note;
 	}
 
 	@Override
@@ -44,7 +46,7 @@ public class NoteHandler implements NoteInterface {
 
 	@Override
 	public void deleteNote(Long id) {
-		// TODO Auto-generated method stub
+		noteRepository.deleteById(id);
 
 	}
 
@@ -85,6 +87,32 @@ public class NoteHandler implements NoteInterface {
 		 else {
 				throw new NotFoundException("Liste de note non trouvée");
 		 }
+	}
+
+
+
+	@Override
+	public float getMoyenneTrimestrielle(Eleve eleve, Trimestre trimestre) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public float getMoyenneAnnuelle(Eleve eleve, List<Moyenne> moyenne) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Float getMoyenneMatiere(Eleve eleve, Matiere matiere) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Moyenne> getListMoyenne(Eleve eleve, List<Matiere> matiere) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

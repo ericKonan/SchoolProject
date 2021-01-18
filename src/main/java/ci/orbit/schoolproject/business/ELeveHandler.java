@@ -68,29 +68,5 @@ public class ELeveHandler implements EleveInterface {
 		return (Inscription) inscriptionRepository.save(new Inscription(new Date(), cls, elv, as));
 	}
 
-	@Override
-	public List<Note> getNoteByMatiere(Long idEleve) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Map<Matiere, Float> getMoyenneMatiereByTrimestre(Long idEleve, List<Matiere> matiere, Long idTrimestre) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public float getMoyenneTrimestrielle(Long idEleve, Long idTrimestre) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public float getMoyenneAnnuelle(Long idEleve, List<Moyenne> moyenne) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	
 }

@@ -2,9 +2,11 @@ package ci.orbit.schoolproject.business;
 
 import java.util.List;
 
+import ci.orbit.schoolproject.entities.AnneeScolaire;
 import ci.orbit.schoolproject.entities.Eleve;
 import ci.orbit.schoolproject.entities.Evaluation;
 import ci.orbit.schoolproject.entities.Matiere;
+import ci.orbit.schoolproject.entities.Moyenne;
 import ci.orbit.schoolproject.entities.Note;
 import ci.orbit.schoolproject.entities.Trimestre;
 import ci.orbit.schoolproject.exception.NotFoundException;
@@ -17,5 +19,9 @@ public interface NoteInterface {
 	public List<Note> noteByEleve(Eleve eleve) throws NotFoundException;
 	public List<Note> noteByEleveByMatiere(Eleve eleve, Matiere matiere) throws NotFoundException;
 	public List<Note> noteByEleveByMatiereByTrimestre(Eleve eleve, Matiere matiere, Trimestre trimestre) throws NotFoundException;
+	public Float getMoyenneMatiere(Eleve eleve,  Matiere matiere);
+	public List<Moyenne> getListMoyenne(Eleve eleve,  List<Matiere> matiere);
+	public float getMoyenneTrimestrielle(Eleve eleve, Trimestre trimestre);
+	public float getMoyenneAnnuelle(Eleve eleve, List<Moyenne> moyenne);
 	
 }

@@ -18,8 +18,5 @@ public interface EleveInterface {
 	public Eleve updateEleve(Long id, String nom, String prenom, String sexe, Date dateNaissance);
 	public void deleteEleve(Long id);
 	public Inscription setEleveInscription(Long idEeleve, Long idClasse, Long idAnnee );
-	public List<Note> getNoteByMatiere(Long idEleve);
-	public Map<Matiere, Float> getMoyenneMatiereByTrimestre(Long idEleve, List<Matiere> matiere, Long idTrimestre);
-	public float getMoyenneTrimestrielle(Long idEleve, Long idTrimestre);
-	public float getMoyenneAnnuelle(Long idEleve, List<Moyenne> moyenne);
+	
 }
