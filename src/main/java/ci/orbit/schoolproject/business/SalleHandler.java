@@ -2,6 +2,7 @@ package ci.orbit.schoolproject.business;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ import ci.orbit.schoolproject.dao.SalleRepository;
 import ci.orbit.schoolproject.entities.Batiment;
 import ci.orbit.schoolproject.entities.Classe;
 import ci.orbit.schoolproject.entities.Salle;
+import ci.orbit.schoolproject.exception.BatimentException;
+import ci.orbit.schoolproject.exception.SalleException;
 
 @Service
 @Transactional
@@ -23,28 +26,54 @@ public class SalleHandler implements SalleInterface{
 	@Autowired
 	private ClasseRepository classeRepository;
 
-	@Override
-	public void setClasseAffectation(Long idClasse, Salle salle) {
-		Classe cl  = classeRepository.findById(idClasse).get();
-		cl.setSalle(salle);
-		
-		
-	}
-
-	@Override
-	public Salle createSalle(String designation, Batiment batiment) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Salle updateSAlle(Long id, String designation, Batiment batiment) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public void deleteSalle(Long id) {
+		Optional<Salle> opt = salleRepository.findById(id);
+		if(!opt.isPresent())
+			throw new SalleException("Salle deja supprimée");
+		salleRepository.deleteById(id);
+	}
+
+
+
+	@Override
+	public Salle createSalle(Salle salle) {
+		return salleRepository.save(salle);
+	}
+
+
+
+	@Override
+	public Salle updateSAlle(Salle salle, Long id) {
+		Optional<Salle> opt = salleRepository.findById(id);
+		if(!opt.isPresent())
+			throw new SalleException("Salle supprimée");
+		return salleRepository.save(salle);
+	}
+
+
+	@Override
+	public List<Salle> getAllSalle() {
+		List<Salle> list = salleRepository.findAll().stream().collect(Collectors.toList());
+		return list;
+	}
+
+
+
+	@Override
+	public Salle getSalleById(Long id) {
+		Optional<Salle> opt = salleRepository.findById(id);
+		if(!opt.isPresent())
+			throw new SalleException("Salle supprimée");
+		return opt.get();
+	}
+
+
+
+	@Override
+	public void setClasseAffectation(Long idClasse, Salle salle) {
 		// TODO Auto-generated method stub
 		
 	}

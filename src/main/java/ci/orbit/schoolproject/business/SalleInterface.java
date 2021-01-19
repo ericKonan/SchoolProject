@@ -7,8 +7,10 @@ import ci.orbit.schoolproject.entities.Classe;
 import ci.orbit.schoolproject.entities.Salle;
 
 public interface SalleInterface {
-	public Salle createSalle(String designation, Batiment batiment);
-	public Salle updateSAlle(Long id, String designation, Batiment batiment);
+	public Salle createSalle(Salle salle);
+	public Salle updateSAlle(Salle salle, Long id);
+	public List<Salle> getAllSalle();
+	public Salle getSalleById(Long id);
 	public void deleteSalle(Long id);
 	public void setClasseAffectation(Long idClasse, Salle salle);
 	
