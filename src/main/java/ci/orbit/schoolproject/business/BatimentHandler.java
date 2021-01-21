@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +23,7 @@ public class BatimentHandler implements BatimentInterface {
 	
 
 	@Override
-	public Batiment createBatiment(Batiment batiment) {
+	public Batiment createBatiment(@Valid Batiment batiment) {
 		return batimentRepository.save(batiment);
 	}
 

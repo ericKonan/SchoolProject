@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,24 +31,14 @@ public class SalleHandler implements SalleInterface{
 	
 
 	@Override
-	public void deleteSalle(Long id) {
-		Optional<Salle> opt = salleRepository.findById(id);
-		if(!opt.isPresent())
-			throw new SalleException("Salle deja supprimée");
-		salleRepository.deleteById(id);
-	}
-
-
-
-	@Override
-	public Salle createSalle(Salle salle) {
+	public Salle createSalle(@Valid Salle salle) {
 		return salleRepository.save(salle);
 	}
 
 
 
 	@Override
-	public Salle updateSAlle(Salle salle, Long id) {
+	public Salle updateSAlle(@Valid Salle salle, Long id) {
 		Optional<Salle> opt = salleRepository.findById(id);
 		if(!opt.isPresent())
 			throw new SalleException("Salle supprimée");
@@ -68,6 +60,14 @@ public class SalleHandler implements SalleInterface{
 		if(!opt.isPresent())
 			throw new SalleException("Salle supprimée");
 		return opt.get();
+	}
+
+	@Override
+	public void deleteSalle(Long id) {
+		Optional<Salle> opt = salleRepository.findById(id);
+		if(!opt.isPresent())
+			throw new SalleException("Salle deja supprimée");
+		salleRepository.deleteById(id);
 	}
 
 

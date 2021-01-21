@@ -9,11 +9,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 
 @Entity
 public class Batiment implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotEmpty(message = "Désinagtion ne peut être vide")
+	@Min(value = 3, message = "La désignation du batiment doit être au moins sur 3 caractères")
 	private String designation;
 	@OneToMany(mappedBy = "batiment",fetch = FetchType.EAGER)
 	private List<Salle> salles;
@@ -38,6 +44,7 @@ public class Batiment implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	public String getDesignation() {
 		return designation;
 	}

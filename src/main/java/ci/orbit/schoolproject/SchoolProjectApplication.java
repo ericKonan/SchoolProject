@@ -12,12 +12,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import ci.orbit.schoolproject.business.SalleInterface;
-import ci.orbit.schoolproject.business.AnneeSoclaireInterface;
+
 import ci.orbit.schoolproject.business.BatimentInterface;
-import ci.orbit.schoolproject.business.ClasseInterface;
-import ci.orbit.schoolproject.business.EleveInterface;
-import ci.orbit.schoolproject.business.EmploiDuTempsInterface;
-import ci.orbit.schoolproject.business.MatiereInterface;
+
 
 import ci.orbit.schoolproject.dao.SalleRepository;
 
@@ -53,16 +50,27 @@ public class SchoolProjectApplication implements CommandLineRunner {
 
 		
 		
-		// Test couche service
-		Batiment btm1 = batimentInterface.createBatiment("BAT A");
-		Batiment btm2 = batimentInterface.createBatiment("BAT B");
+		// Test crud couche service
+		Batiment ba = new Batiment("BAT A");
+		Batiment btm1 = batimentInterface.createBatiment(ba);
+		Batiment bb = new Batiment("BK");
+		Batiment btm2 = batimentInterface.createBatiment(bb);
 		
-		Salle s1 = salleRepository.save(new Salle("Salle A", btm1));
-		Salle s2 = salleRepository.save(new Salle("Salle B", btm1));
-		Salle s3 = salleRepository.save(new Salle("Salle C", btm1));
-		Salle s4 = salleRepository.save(new Salle("Salle D", btm2));
+		Salle sa = new Salle("Salle 1", btm1);
+		Salle s1 = salleInterface.createSalle(sa);
+		Salle sb = new Salle("Salle 2", btm1);
+		Salle s2 = salleInterface.createSalle(sb);
+		Salle sc = new Salle("Salle 3", btm1);
+		Salle s3 = salleInterface.createSalle(sc);
+		Salle sd = new Salle("Salle 4", btm1);
+		Salle s4 = salleInterface.createSalle(sd);
 		
-
+		// Test list couche service
+		
+		List<Salle> sl = batimentInterface.getListSalle(btm1.getId());			
+		 sl.forEach(s->{ 
+			 System.out.println(s.getDesignation());
+		 });
 		
 
 		

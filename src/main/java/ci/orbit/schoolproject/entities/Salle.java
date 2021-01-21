@@ -9,13 +9,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Salle implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Min(value = 3, message = "La désignation de salle doit être au moins sur 3 caractères")
+	@NotEmpty(message = "Désinagtion ne peut être nulle")
 	private String designation;
 	@ManyToOne
+	@NotNull(message = "Batiment ne peut être nulle")
 	private Batiment batiment;
 	@OneToMany(mappedBy = "salle")
 	private List<Classe> classes;
