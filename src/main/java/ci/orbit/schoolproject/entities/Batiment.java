@@ -11,16 +11,24 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 
 @Entity
 public class Batiment implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@NotEmpty(message = "Désinagtion ne peut être vide")
-	@Min(value = 3, message = "La désignation du batiment doit être au moins sur 3 caractères")
+	@Size(min = 3,message = "La désignation du batiment doit être au moins sur 3 caractères")
 	private String designation;
+	
 	@OneToMany(mappedBy = "batiment",fetch = FetchType.EAGER)
 	private List<Salle> salles;
 	
@@ -51,13 +59,12 @@ public class Batiment implements Serializable {
 	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
+	
 	@Override
 	public String toString() {
 		return "Batiment [id=" + id + ", designation=" + designation + ", salles=" + salles + ", getSalles()="
 				+ getSalles() + ", getId()=" + getId() + ", getDesignation()=" + getDesignation() + ", getClass()="
 				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
-	
-	
 	
 }

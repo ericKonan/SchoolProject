@@ -9,19 +9,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Salle implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Min(value = 3, message = "La désignation de salle doit être au moins sur 3 caractères")
+	@Size(min = 3,message = "La désignation du batiment doit être au moins sur 3 caractères")
 	@NotEmpty(message = "Désinagtion ne peut être nulle")
 	private String designation;
 	@ManyToOne
 	@NotNull(message = "Batiment ne peut être nulle")
+	@JsonIgnore
 	private Batiment batiment;
 	@OneToMany(mappedBy = "salle")
 	private List<Classe> classes;

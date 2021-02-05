@@ -51,9 +51,9 @@ public class SchoolProjectApplication implements CommandLineRunner {
 		
 		
 		// Test crud couche service
-		Batiment ba = new Batiment("BAT A");
+		Batiment ba = new Batiment("BATIMENT A");
 		Batiment btm1 = batimentInterface.createBatiment(ba);
-		Batiment bb = new Batiment("BK");
+		Batiment bb = new Batiment("BAT B");
 		Batiment btm2 = batimentInterface.createBatiment(bb);
 		
 		Salle sa = new Salle("Salle 1", btm1);
@@ -67,6 +67,7 @@ public class SchoolProjectApplication implements CommandLineRunner {
 		
 		// Test list couche service
 		
+		//System.out.println("btm2"+ btm2);
 		List<Salle> sl = batimentInterface.getListSalle(btm1.getId());			
 		 sl.forEach(s->{ 
 			 System.out.println(s.getDesignation());

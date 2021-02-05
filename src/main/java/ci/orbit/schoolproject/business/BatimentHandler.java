@@ -31,8 +31,7 @@ public class BatimentHandler implements BatimentInterface {
 
 	@Override
 	public List<Batiment> getAllBatiments() {
-		 List<Batiment> list = batimentRepository.findAll().stream().collect(Collectors.toList());
-		 return list;
+		 return batimentRepository.findAll();
 	}
 
 
@@ -52,6 +51,7 @@ public class BatimentHandler implements BatimentInterface {
 		Optional<Batiment> opt = batimentRepository.findById(id);
 		if(!opt.isPresent())
 			throw new BatimentException("Batiment supprimé");
+		batiment.setId(id);
 		return batimentRepository.save(batiment);
 		
 	}
@@ -62,15 +62,15 @@ public class BatimentHandler implements BatimentInterface {
 	public void deleteBatiment(Long id) {
 		Optional<Batiment> opt = batimentRepository.findById(id);
 		if(!opt.isPresent())
-			throw new BatimentException("Batiment deja supprimé");
+			throw new BatimentException("Batiment introuvable");
 		batimentRepository.deleteById(id);
 	}
 	
 
 
 	@Override
-	public List<Salle> getListSalle(Long id) {
-		 Optional<Batiment> opt = batimentRepository.findById(id);
+	public List<Salle> getListSalle(Long batimentid) {
+		 Optional<Batiment> opt = batimentRepository.findById(batimentid);
 		 if(!opt.isPresent()) 
 			 throw new BatimentException("Batiment introuvable");
 		 return opt.get().getSalles();
