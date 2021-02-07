@@ -12,6 +12,5 @@ public interface SalleInterface {
 	public List<Salle> getAllSalle();
 	public Salle getSalleById(Long id);
 	public void deleteSalle(Long id);
-	public void setClasseAffectation(Long idClasse, Salle salle);
 	
 }

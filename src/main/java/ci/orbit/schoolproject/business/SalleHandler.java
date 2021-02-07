@@ -15,8 +15,8 @@ import ci.orbit.schoolproject.dao.SalleRepository;
 import ci.orbit.schoolproject.entities.Batiment;
 import ci.orbit.schoolproject.entities.Classe;
 import ci.orbit.schoolproject.entities.Salle;
-import ci.orbit.schoolproject.exception.BatimentException;
-import ci.orbit.schoolproject.exception.SalleException;
+import ci.orbit.schoolproject.exception.BatimentNotFoundException;
+import ci.orbit.schoolproject.exception.SalleNotFoundException;
 
 @Service
 @Transactional
@@ -41,7 +41,8 @@ public class SalleHandler implements SalleInterface{
 	public Salle updateSAlle(@Valid Salle salle, Long id) {
 		Optional<Salle> opt = salleRepository.findById(id);
 		if(!opt.isPresent())
-			throw new SalleException("Salle supprimée");
+			throw new SalleNotFoundException("Salle supprimée");
+		salle.setId(id);
 		return salleRepository.save(salle);
 	}
 
@@ -58,7 +59,7 @@ public class SalleHandler implements SalleInterface{
 	public Salle getSalleById(Long id) {
 		Optional<Salle> opt = salleRepository.findById(id);
 		if(!opt.isPresent())
-			throw new SalleException("Salle supprimée");
+			throw new SalleNotFoundException("Salle supprimée");
 		return opt.get();
 	}
 
@@ -66,16 +67,10 @@ public class SalleHandler implements SalleInterface{
 	public void deleteSalle(Long id) {
 		Optional<Salle> opt = salleRepository.findById(id);
 		if(!opt.isPresent())
-			throw new SalleException("Salle deja supprimée");
+			throw new SalleNotFoundException("Salle deja supprimée");
 		salleRepository.deleteById(id);
 	}
 
 
-
-	@Override
-	public void setClasseAffectation(Long idClasse, Salle salle) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

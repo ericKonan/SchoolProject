@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ci.orbit.schoolproject.dao.BatimentRepository;
 import ci.orbit.schoolproject.entities.Batiment;
 import ci.orbit.schoolproject.entities.Salle;
-import ci.orbit.schoolproject.exception.BatimentException;
+import ci.orbit.schoolproject.exception.BatimentNotFoundException;
 
 @Service
 @Transactional
@@ -40,17 +40,17 @@ public class BatimentHandler implements BatimentInterface {
 	public Batiment getBatimentById(Long id) {
 		Optional<Batiment> opt = batimentRepository.findById(id);
 		if(!opt.isPresent())
-			throw new BatimentException("Batiment introuvable");
+			throw new BatimentNotFoundException("Batiment introuvable");
 		return opt.get();
 	}
 
 
 
 	@Override
-	public Batiment updateBatiment(Batiment batiment, Long id) {
+	public Batiment updateBatiment(@Valid Batiment batiment, Long id) {
 		Optional<Batiment> opt = batimentRepository.findById(id);
 		if(!opt.isPresent())
-			throw new BatimentException("Batiment supprimé");
+			throw new BatimentNotFoundException("Batiment supprimé");
 		batiment.setId(id);
 		return batimentRepository.save(batiment);
 		
@@ -62,7 +62,7 @@ public class BatimentHandler implements BatimentInterface {
 	public void deleteBatiment(Long id) {
 		Optional<Batiment> opt = batimentRepository.findById(id);
 		if(!opt.isPresent())
-			throw new BatimentException("Batiment introuvable");
+			throw new BatimentNotFoundException("Batiment introuvable");
 		batimentRepository.deleteById(id);
 	}
 	
@@ -72,7 +72,7 @@ public class BatimentHandler implements BatimentInterface {
 	public List<Salle> getListSalle(Long batimentid) {
 		 Optional<Batiment> opt = batimentRepository.findById(batimentid);
 		 if(!opt.isPresent()) 
-			 throw new BatimentException("Batiment introuvable");
+			 throw new BatimentNotFoundException("Batiment introuvable");
 		 return opt.get().getSalles();
 		
 	}

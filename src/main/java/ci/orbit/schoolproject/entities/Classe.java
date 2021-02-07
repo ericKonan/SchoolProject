@@ -9,12 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Classe implements Serializable {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotEmpty(message = "Désignation ne peut être vide")
 	private String designation;
 	private String niveau;
 	@ManyToOne
@@ -65,6 +67,8 @@ public class Classe implements Serializable {
 		return "Classe [id=" + id + ", designation=" + designation + ", niveau=" + niveau + ", salle=" + salle
 				+ ", inscriptions=" + inscriptions + "]";
 	}
+	
+	
 	
 	
 	

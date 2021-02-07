@@ -8,17 +8,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Inscription implements Serializable{
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id ;
+	@Size(max = 8,message = "La désignation du batiment doit être au moins sur 3 caractères")
 	private Date date ;
+	@NotEmpty(message = "Classe ne peut être vide")
 	@ManyToOne
 	private Classe classe;
+	@NotEmpty(message = "Eleve ne peut être vide")
 	@ManyToOne
 	private Eleve eleve;
+	@NotEmpty(message = "Classe ne peut être vide")
 	@ManyToOne
 	private AnneeScolaire anneeScolaire;
 	
@@ -67,5 +73,14 @@ public class Inscription implements Serializable{
 	public void setAnneeScolaire(AnneeScolaire anneeScolaire) {
 		this.anneeScolaire = anneeScolaire;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Inscription [id=" + id + ", date=" + date + ", classe=" + classe + ", eleve=" + eleve
+				+ ", anneeScolaire=" + anneeScolaire + "]";
+	}
+	
+	
 	
 }

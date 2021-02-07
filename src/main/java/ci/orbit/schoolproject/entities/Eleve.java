@@ -44,6 +44,11 @@ public class Eleve extends Personne implements Serializable{
 	public void setNotes(List<Note> notes) {
 		this.notes = notes;
 	}
+
+	@Override
+	public String toString() {
+		return "Eleve [identifiant=" + identifiant + ", dateNaissance=" + dateNaissance + ", notes=" + notes + "]";
+	}
 	
 	
 }
