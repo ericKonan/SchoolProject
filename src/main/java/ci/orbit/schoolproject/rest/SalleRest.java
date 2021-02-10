@@ -31,7 +31,7 @@ public class SalleRest {
 	}
 	
 	@GetMapping("salles/{id}")
-	public Salle getSalleById(Long id) {
+	public Salle getSalleById(@PathVariable(name = "id") Long id) {
 		return salleInterface.getSalleById(id);
 	}
 	
