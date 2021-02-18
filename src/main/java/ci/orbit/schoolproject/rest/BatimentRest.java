@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ci.orbit.schoolproject.business.BatimentInterface;
 import ci.orbit.schoolproject.entities.Batiment;
-import ci.orbit.schoolproject.exception.BatHttpNotFoundException;
 import ci.orbit.schoolproject.exception.ForbiddenException;
 
 @RestController
@@ -26,7 +26,8 @@ public class BatimentRest {
 	@Autowired
 	BatimentInterface batimentInterface;
 	
-	@PostMapping(path="/batiment")
+	@PostMapping(value="/batiment", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
 	public Batiment createBatiment(@RequestBody @Valid Batiment batiment) {
 		return batimentInterface.createBatiment(batiment);
 	}
@@ -40,7 +41,6 @@ public class BatimentRest {
 	@GetMapping("batiments/{id}")
 	public Batiment getBatimentById(@PathVariable(name = "id") Long id) {
 		Batiment batiment = batimentInterface.getBatimentById(id);
-		 if (batiment == null) throw new BatHttpNotFoundException();
 		 return batiment;
 	}
 		
